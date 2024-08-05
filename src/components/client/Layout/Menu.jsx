@@ -5,7 +5,7 @@ import logout from '../../../assets/icons/logout.png';
 import arrow_down from '../../../assets/icons/down-arrow.png';
 import '../../../App.css'
 
-export function Menu({ setIsopen, isopen }) {
+export function Menu({ setIsopen, isopen, handleSignout}) {
 
     const [isAccountOpen, setIsAccountOpen] = useState(false);
 
@@ -43,7 +43,9 @@ export function Menu({ setIsopen, isopen }) {
                     <img src={login} alt="login" className="w-[15px] h-[15px]" />
                     </div>
                 </li>
-                <li className="hover:opacity-50 cursor-pointer transition-all duration-200 w-full flex h-[40px] items-center justify-end pr-5">
+                <li 
+                    onClick={handleSignout}
+                    className="hover:opacity-50 cursor-pointer transition-all duration-200 w-full flex h-[40px] items-center justify-end pr-5">
                     Sign Out
                     <div
                     className="hover:opacity-35 transition-all duration-200 w-[35px] h-[35px] flex items-center justify-center"

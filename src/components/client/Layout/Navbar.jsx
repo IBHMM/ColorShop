@@ -51,6 +51,11 @@ export function Navbar() {
         loadCard();
     });
 
+    const handleSignout = () => {
+        localStorage.removeItem('user');
+        window.location.reload();
+    };
+
     const cartItemCount = card.length;
 
     return (
@@ -77,7 +82,9 @@ export function Navbar() {
                             <div className='hover:opacity-35 transition-all duration-200 w-[35px] h-[35px] flex items-center justify-center rounded-[50%]'>
                                 <img src={search} alt="Search" className='w-[14px] h-[14px]' />
                             </div>
-                            <div className='hover:opacity-35 transition-all duration-200 w-[35px] h-[35px] flex items-center justify-center rounded-[50%]'>
+                            <div 
+                                onClick={handleSignout}
+                                className='hover:opacity-35 transition-all duration-200 w-[35px] h-[35px] flex items-center justify-center rounded-[50%]'>
                                 <img src={userIcon} alt="User" className='w-[14px] h-[14px]' />
                             </div>
                             <Link to={"/cart"} className='relative hover:opacity-35 transition-all duration-200 w-[35px] h-[35px] flex items-center justify-center rounded-[50%] bg-gray-100'>
@@ -97,7 +104,7 @@ export function Navbar() {
                     </div>
                 </div>
             </nav>
-            {isOpen && <Menu setIsOpen={setIsOpen} isOpen={isOpen} />}
+            {isOpen && <Menu setIsOpen={setIsOpen} isOpen={isOpen} handleSignout={handleSignout}/>}
         </>
     );
 }
