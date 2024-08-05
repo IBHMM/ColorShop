@@ -1,0 +1,27 @@
+@keyframes open {
+    from{
+        transform: translateX(400px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes close {
+    from{
+        transform: translateX(0px);
+    }
+    to{
+        transform: translateX(400px);
+    }
+}
+
+
+
+.menu-open {
+    animation: open 0.2s linear;
+}
+
+.menu-close {
+    animation: open 0.2s linear;
+}

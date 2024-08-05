@@ -1,0 +1,71 @@
+.banner {
+    background-image: url("../../assets/images/slider_1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.deals {
+    background-image: url("../../assets/images/deal_ofthe_week.png");
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.zindex {
+    z-index: 100000;
+}
+
+.bl {
+    background: #000;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+  
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+@media (max-width: 760px) {
+    .swiper-button-next {
+      right: 20px;
+      transform: rotate(90deg);
+    }
+  
+    .swiper-button-prev {
+      left: 20px;
+      transform: rotate(90deg);
+    }
+}
+  
+.hover_blog {
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover_blog.active {
+    transform: scale(1);
+}
