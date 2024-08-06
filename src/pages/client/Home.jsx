@@ -84,7 +84,6 @@ export function Home() {
         loadWishlist();
     }, []);
 
-
     return (
         <div className="flex items-center justify-between flex-col relative">
             <Banner />

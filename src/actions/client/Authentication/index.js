@@ -34,6 +34,8 @@ export const SignUpAction = async ({ request }) => {
     const password = formData.get('password');
     const name = formData.get('name');
     const surname = formData.get('surname');
+
+    console.log(email, password, name, surname);
     
     const response = await fetch('https://colorshopapi.onrender.com/api/users/signup', {
         method: 'POST',

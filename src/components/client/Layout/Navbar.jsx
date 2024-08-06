@@ -12,6 +12,7 @@ export function Navbar() {
     const [menu, setMenu] = useState(window.innerWidth < 1000);
     const [isOpen, setIsOpen] = useState(false);
     const [card, setCard] = useState([]);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const user = useContext(User);
 
     useEffect(() => {
@@ -49,7 +50,7 @@ export function Navbar() {
         }
 
         loadCard();
-    });
+    }, []);
 
     const handleSignout = () => {
         localStorage.removeItem('user');
@@ -62,10 +63,10 @@ export function Navbar() {
         <>
             <nav className="w-full h-[100px] flex items-center justify-center bg-white shadow-xl zindex fixed top-0">
                 <div className="flex items-center justify-between w-[70%] bg-white h-full max-[600px]:w-[90%] max-[1100px]:w-[80%]">
-                    <div>
+                    <Link to={"/home"}>
                         <span className="text-[25px] text-black font-bold">COLO</span>
                         <span className="text-[25px] ml-[0px] text-orange-600 font-bold">SHOP</span>
-                    </div>
+                    </Link>
 
                     <div className="flex items-center justify-between gap-[100px]">
                         {!menu && (
@@ -83,9 +84,26 @@ export function Navbar() {
                                 <img src={search} alt="Search" className='w-[14px] h-[14px]' />
                             </div>
                             <div 
-                                onClick={handleSignout}
-                                className='hover:opacity-35 transition-all duration-200 w-[35px] h-[35px] flex items-center justify-center rounded-[50%]'>
+                                onMouseEnter={() => setDropdownOpen(true)}
+                                onMouseLeave={() => setDropdownOpen(false)}
+                                className='relative flex items-center justify-center w-[35px] h-[35px] rounded-[50%] hover:opacity-35 transition-all duration-200'>
                                 <img src={userIcon} alt="User" className='w-[14px] h-[14px]' />
+                                {dropdownOpen && (
+                                    <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-10">
+                                        <Link 
+                                            to="/liked"
+                                            className="block px-4 py-2 text-gray-800 hover:scale-105"
+                                        >
+                                            Liked
+                                        </Link>
+                                        <button 
+                                            onClick={handleSignout} 
+                                            className="block w-full px-4 py-2 text-gray-800 hover:scale-105 text-left"
+                                        >
+                                            Logout
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                             <Link to={"/cart"} className='relative hover:opacity-35 transition-all duration-200 w-[35px] h-[35px] flex items-center justify-center rounded-[50%] bg-gray-100'>
                                 <img src={cart} alt="Cart" className='w-[14px] h-[14px]' />
@@ -104,7 +122,7 @@ export function Navbar() {
                     </div>
                 </div>
             </nav>
-            {isOpen && <Menu setIsOpen={setIsOpen} isOpen={isOpen} handleSignout={handleSignout}/>}
+            {isOpen && <Menu setIsOpen={setIsOpen} isOpen={isOpen} handleSignout={handleSignout} />}
         </>
     );
 }
